@@ -13,7 +13,7 @@ class ListShelves extends Component {
   }
 
   render() {
-    const { books } = this.props;
+    const { books, onMoveBook } = this.props;
 
     return (
       <div>
@@ -25,6 +25,7 @@ class ListShelves extends Component {
               </h2>
               <ListBooks
                 books={books.filter(book => book.shelf === shelf)}
+                onMoveBook={onMoveBook}
               />
             </div>
           ))

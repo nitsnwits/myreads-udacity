@@ -26,11 +26,12 @@ class BooksApp extends React.Component {
       .catch(err => console.error('Error occurred fetching contacts ', err));
   }
 
-  moveBook(book, shelf) {
+  moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf)
       .then(this.setState(prevState => ({
         books: prevState.books.map(b => {
           if (b.id === book.id) b.shelf = shelf;
+          return b;
         })
       })))
       .catch(err => console.error('Error occurred moving book'));
