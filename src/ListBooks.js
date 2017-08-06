@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
-import sortBy from 'sort-by';
-import { Link } from 'react-router-dom';
 
 class ListBooks extends Component {
 
@@ -16,7 +13,7 @@ class ListBooks extends Component {
   }
 
   render() {
-    const { books, onMoveBook } = this.props;
+    const { books } = this.props;
 
     return (
       <div className="bookshelf-books">

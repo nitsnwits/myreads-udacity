@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import escapeRegExp from 'escape-string-regexp';
 import ListBooks from './ListBooks';
 const SHELVES = ['currentlyReading', 'wantToRead', 'read'];
 
@@ -19,7 +17,7 @@ class ListShelves extends Component {
       <div>
         {
           SHELVES.map(shelf => (
-            <div className="bookshelf">
+            <div className="bookshelf" key={shelf}>
               <h2 className="bookshelf-title">
                 {shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str) { return str.toUpperCase(); })}
               </h2>

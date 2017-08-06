@@ -7,7 +7,6 @@ import * as BooksAPI from './BooksAPI';
 class Search extends Component {
 
   static propTypes = {
-    books: PropTypes.array.isRequired,
     onMoveBook: PropTypes.func.isRequired
   }
 
@@ -24,10 +23,8 @@ class Search extends Component {
   }
 
   searchBooks = (query, maxResults) => {
-    console.log('Searching books with query: ', query);
     BooksAPI.search(query, maxResults || 10)
       .then(searchedBooks => {
-        console.log('Searched books %j', searchedBooks);
         if (!searchedBooks || searchedBooks.error) 
             searchedBooks = [];
         this.setState(prevState => ({searchedBooks}));
