@@ -26,8 +26,24 @@ class Search extends Component {
     BooksAPI.search(query, maxResults || 10)
       .then(searchedBooks => {
         if (!searchedBooks || searchedBooks.error) 
-            searchedBooks = [];
-        this.setState(prevState => ({searchedBooks}));
+            return [];
+
+        let response = [];
+
+        for (const searchedBook of searchedBooks) {
+          for (const book of this.props.books) {
+            if (searchedBook.id === book.id) {
+              console.log('searched book %j', searchedBook);
+              searchedBook.shelf = book.shelf;
+            }
+          }
+          response.push(searchedBook);
+        }
+
+        return response;
+      })
+      .then(searchedBooks => {
+        this.setState(prevState => ({searchedBooks}))
       })
       .catch(err => console.error('Error occurred searching books: ', err));
   }
